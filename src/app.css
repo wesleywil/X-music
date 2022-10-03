@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --light-color: #dcebfd;
+  --mid-color: #969c71;
+  --dark-color: #0d2a39;
+}
+
+body {
+  background-color: var(--dark-color);
+}
+
+.lg-color {
+  color: var(--light-color);
+}
+.md-color {
+  color: var(--mid-color);
+}
+.dk-color {
+  color: var(--dark-color);
+}
+.bglg-color {
+  background-color: var(--light-color);
+}
+.bgmd-color {
+  background-color: var(--mid-color);
+}
+.bgdk-color {
+  background-color: var(--dark-color);
+}
