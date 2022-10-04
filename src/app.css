@@ -30,3 +30,12 @@ body {
 .bgdk-color {
   background-color: var(--dark-color);
 }
+.bdlg-color {
+  border: 1px solid var(--light-color);
+}
+.bdmd-color {
+  border: 1px solid var(--mid-color);
+}
+.bddk-color {
+  border: 1px solid var(--dark-color);
+}
