@@ -30,3 +30,6 @@ top50.ts
 
 # Svelte Test Files
 test.svelte
+
+# local music for tests
+src/music/

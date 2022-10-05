@@ -3,6 +3,7 @@
   import axios from "axios";
 
   import ArtistCard from "../components/ArtistCard.svelte";
+  import Player from "../components/Player.svelte";
 
   let data = [];
 
@@ -32,12 +33,42 @@
     <h2>Artists - Bands - Groups</h2>
   </div>
   <div class="flex flex-wrap justify-center gap-2">
-    {#each data as new_obj}
+    {#each data as new_obj (new_obj.track.id)}
       <ArtistCard
         artist_name={new_obj.track.artists[0].name}
         artist_music={new_obj.track.name}
         img={new_obj.track.album.images[1].url}
+        message={new_obj.track.id}
       />
     {/each}
   </div>
+  <div class="player_pos" id="player_comp">
+    <Player />
+  </div>
 </div>
+
+<style>
+  @keyframes move {
+    from {
+      transform: translateX(100%);
+      left: 0%;
+    }
+    to {
+      transform: translateX(-200%);
+      left: 100%;
+    }
+  }
+  #player_comp {
+    position: fixed;
+    bottom: 20px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: var(--dark-color);
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 4px;
+  }
+</style>

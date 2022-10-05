@@ -2,6 +2,7 @@
   export let artist_name: string;
   export let artist_music: string;
   export let img: string;
+  export let message: string;
 </script>
 
 <div class="flex relative">
@@ -9,7 +10,7 @@
     <img
       alt="gallery"
       class="absolute inset-0 img_size object-cover object-center"
-      src={img ? img : "https://dummyimage.com/250x300"}
+      src={img ? img : "https://dummyimage.com/300x300"}
     />
   </div>
 
@@ -27,6 +28,8 @@
       >
         {artist_music}
       </h1>
+      <button class="btn_demo" id="message">Play Demo</button>
+      <p>{message}</p>
     </div>
   </div>
 </div>
@@ -34,6 +37,16 @@
 <style>
   .img_size {
     height: 300px;
-    width: 250px;
+    width: 300px;
+  }
+  .btn_demo {
+    background-color: var(--mid-color);
+    color: var(--dark-color);
+    font-weight: bold;
+    padding: 5px 3px;
+    transition-duration: 300ms;
+  }
+  .btn_demo:hover {
+    opacity: 70%;
   }
 </style>
