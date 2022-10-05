@@ -25,6 +25,8 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
+    "howler": "^2.2.3",
+    "svelte-icons": "^2.1.0",
     "svelte-routing": "^1.6.0"
   }
 }
