@@ -23,7 +23,7 @@
   });
 </script>
 
-<div class="flex flex-col p-4 border align-center items-center screen_size">
+<div class="flex flex-col p-4  align-center items-center screen_size">
   <div
     class="mx-auto self-center text-3xl text-center lg-color flex flex-col gap-2  m-2 p-4 pl-8 xl:w-1/2 md:w-2/3"
   >

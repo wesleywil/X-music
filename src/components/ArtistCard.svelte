@@ -1,8 +1,18 @@
 <script lang="ts">
+  import { id_music, show } from "../store";
+
   export let artist_name: string;
   export let artist_music: string;
   export let img: string;
   export let message: string;
+
+  const setMusic_Id = () => {
+    id_music.set(message);
+    show.set(true);
+    setTimeout(() => {
+      show.set(false);
+    }, 30000);
+  };
 </script>
 
 <div class="flex relative">
@@ -28,8 +38,7 @@
       >
         {artist_music}
       </h1>
-      <button class="btn_demo" id="message">Play Demo</button>
-      <p>{message}</p>
+      <button on:click={setMusic_Id} class="btn_demo">Play Demo</button>
     </div>
   </div>
 </div>

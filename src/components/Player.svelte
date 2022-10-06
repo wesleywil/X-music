@@ -1,4 +1,5 @@
 <script>
+  import { id_music, show } from "../store";
   import axios from "axios";
   import { Howl, Howler } from "howler";
 
@@ -15,17 +16,28 @@
   let music_name;
 
   let volume = 0;
+
+  let countValue;
+  let showValue;
+
+  id_music.subscribe((value) => {
+    countValue = value;
+  });
+  show.subscribe((value) => {
+    showValue = value;
+  });
+
   const playMusic = async () => {
-    console.log("PLAY");
+    console.log("PLAY", countValue);
     const res = await axios.get("https://spotify23.p.rapidapi.com/tracks/", {
-      params: { ids: "4WNcduiCmDNfmTEz7JvmLv" },
+      params: { ids: countValue },
       headers: {
         "X-RapidAPI-Key": import.meta.env.VITE_X_RapidAPI_Key,
         "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
       },
     });
-    url_music = res.data.tracks[0].preview_url;
     console.log("MUSIC DATA=> ", res.data.tracks);
+    url_music = res.data.tracks[0].preview_url;
     artist_name = res.data.tracks[0].name;
     album_name = res.data.tracks[0].album.name;
     album_img = res.data.tracks[0].album.images[1].url;
@@ -71,43 +83,45 @@
   };
 </script>
 
-<div class="flex justify-center gap-4  p-2">
-  <div class="border w-24 h-24">
-    <img src={album_img} alt="album" />
-  </div>
-  <div class="self-center  border w-96 h-8 text-xl overflow-hidden">
-    <div class="animate_music lg-color">
-      <p class="w-screen">
-        Artist: {artist_name} - Album: {album_name} - Music: {music_name}
-      </p>
+{#if showValue}
+  <div class={`flex justify-center gap-4  p-2 {hidden}`}>
+    <div class="border w-24 h-24">
+      <img src={album_img} alt="album" />
+    </div>
+    <div class="self-center  border w-96 h-8 text-xl overflow-hidden">
+      <div class="animate_music lg-color">
+        <p class="w-screen">
+          Artist: {artist_name} - Album: {album_name} - Music: {music_name}
+        </p>
+      </div>
+    </div>
+    <button
+      on:click={playMusic}
+      class="self-center bgmd-color dk-color px-2 pl-4 font-bold w-12 h-12 rounded-full"
+      ><FaPlay /></button
+    >
+    <button
+      on:click={pauseMusic}
+      class="self-center bgmd-color dk-color px-2 py-1 font-bold w-12 h-12 rounded-full"
+      ><FaPause /></button
+    >
+    <div class="flex  gap-4 self-center">
+      <button
+        on:click={volumeUp}
+        class="bgmd-color dk-color px-2 py-1 font-bold w-12 h-12 rounded-full"
+      >
+        <FaVolumeUp />
+      </button>
+      <h3 class="self-center text-3xl">{volume.toPrecision(1)}</h3>
+      <button
+        on:click={volumeDown}
+        class="bgmd-color dk-color px-2 py-1 font-bold w-12 h-12 rounded-full"
+      >
+        <FaVolumeDown />
+      </button>
     </div>
   </div>
-  <button
-    on:click={playMusic}
-    class="self-center bgmd-color dk-color px-2 pl-4 font-bold w-12 h-12 rounded-full"
-    ><FaPlay /></button
-  >
-  <button
-    on:click={pauseMusic}
-    class="self-center bgmd-color dk-color px-2 py-1 font-bold w-12 h-12 rounded-full"
-    ><FaPause /></button
-  >
-  <div class="flex  gap-4 self-center">
-    <button
-      on:click={volumeUp}
-      class="bgmd-color dk-color px-2 py-1 font-bold w-12 h-12 rounded-full"
-    >
-      <FaVolumeUp />
-    </button>
-    <h3 class="self-center text-3xl">{volume.toPrecision(1)}</h3>
-    <button
-      on:click={volumeDown}
-      class="bgmd-color dk-color px-2 py-1 font-bold w-12 h-12 rounded-full"
-    >
-      <FaVolumeDown />
-    </button>
-  </div>
-</div>
+{/if}
 
 <style>
   @keyframes move {
