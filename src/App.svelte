@@ -6,6 +6,7 @@
   import Homepage from "./pages/homepage.svelte";
   import Top100 from "./pages/top100.svelte";
   import Test from "./pages/test.svelte";
+  import Musics from "./pages/musics.svelte";
 </script>
 
 <main>
@@ -15,6 +16,7 @@
       <Route path="/"><Homepage /></Route>
       <Route path="/top100"><Top100 /></Route>
       <Route path="/xp"><Test /></Route>
+      <Route path="/musics"><Musics /></Route>
     </div>
   </Router>
 </main>

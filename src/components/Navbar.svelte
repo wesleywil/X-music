@@ -18,6 +18,7 @@
     >
       <Link to="/" class="mr-5 hover:text-white/50">Home</Link>
       <Link to="/top100" class="mr-5 hover:text-white/50">Top100</Link>
+      <Link to="/musics" class="mr-5 hover:text-white/50">Musics</Link>
     </nav>
     <button
       class="inline-flex items-center bglg-color dk-color border-0 py-1 px-3 focus:outline-none hover:bg-slate-400 rounded text-base mt-4 md:mt-0"
