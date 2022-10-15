@@ -1,10 +1,29 @@
 <script lang="ts">
-  import { search_results } from "../store";
+  import {
+    search_results_musics,
+    search_results_artists,
+    search_option,
+  } from "../store";
   import axios from "axios";
+  import FaSearch from "svelte-icons/fa/FaSearch.svelte";
 
   export let searchInput: string = "";
 
+  let option: boolean;
+  search_option.subscribe((value) => {
+    option = value;
+  });
+
+  const onToggle = () => {
+    search_option.set(!option);
+    console.log(option);
+    search_results_artists.set([]);
+    search_results_musics.set([]);
+  };
+
   const searchMusic = async () => {
+    // search_results_artists.set([]);
+    // search_results_musics.set([]);
     const res = await axios.get("https://spotify23.p.rapidapi.com/search/", {
       params: {
         q: searchInput,
@@ -18,19 +37,40 @@
         "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
       },
     });
-    console.log("RESULTS => ", res.data.tracks.items);
-    search_results.set(res.data.tracks.items);
+    console.log("RESULTS => ", res.data);
+    if (!option) {
+      // search_results_artists.set([]);
+      search_results_musics.set(res.data.tracks.items);
+      console.log("MUSIC LIST ===> ", res.data.tracks.items);
+    } else {
+      // search_results_musics.set([]);
+      search_results_artists.set(res.data.artists.items);
+      console.log("ARTISTS LIST ==> ", res.data.artists.items);
+    }
   };
 </script>
 
-<div class="flex gap-0 justify-center p-2">
-  <input
-    bind:value={searchInput}
-    type="text"
-    placeholder="search music"
-    class="rounded-l w-full font-semibold bglg-color dk-color"
-  />
-  <button on:click={searchMusic} class="search_btn">Search</button>
+<div class="flex flex-col gap-2 justify-center p-2">
+  <div class="flex gap-2 justify-center">
+    <span>Music</span>
+    <input
+      type="checkbox"
+      class="toggle toggle-lg bgmd-color"
+      on:click={onToggle}
+    />
+    <span>Artist</span>
+  </div>
+  <div class="flex gap-0">
+    <input
+      bind:value={searchInput}
+      type="text"
+      placeholder="Search Artist/Music"
+      class="pl-2 rounded-l w-full font-semibold bglg-color dk-color"
+    />
+    <button on:click={searchMusic} class="search_btn h-12 w-12"
+      ><FaSearch /></button
+    >
+  </div>
 </div>
 
 <style>
