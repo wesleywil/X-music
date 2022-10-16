@@ -10,17 +10,17 @@
       to="/"
       class="flex title-font font-medium items-center md-color mb-4 md:mb-0"
     >
-      <img src="public/X-music.svg" alt="logo" class="logo" />
+      <img src="X-music.svg" alt="logo" class="logo" />
       <span class="ml-3 text-xl">X-Music</span>
     </Link>
     <nav
       class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center"
     >
       <Link to="/" class="mr-5 hover:text-white/50">Home</Link>
-      <Link to="/top100" class="mr-5 hover:text-white/50">Top100</Link>
+      <Link to="/top50" class="mr-5 hover:text-white/50">Top50</Link>
       <Link to="/musics" class="mr-5 hover:text-white/50">Musics</Link>
     </nav>
-    <button
+    <!-- <button
       class="inline-flex items-center bglg-color dk-color border-0 py-1 px-3 focus:outline-none hover:bg-slate-400 rounded text-base mt-4 md:mt-0"
       >Button
       <svg
@@ -34,7 +34,7 @@
       >
         <path d="M5 12h14M12 5l7 7-7 7" />
       </svg>
-    </button>
+    </button> -->
   </div>
 </header>
 
