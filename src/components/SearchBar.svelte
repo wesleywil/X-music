@@ -22,8 +22,6 @@
   };
 
   const searchMusic = async () => {
-    // search_results_artists.set([]);
-    // search_results_musics.set([]);
     const res = await axios.get("https://spotify23.p.rapidapi.com/search/", {
       params: {
         q: searchInput,
@@ -39,11 +37,9 @@
     });
     console.log("RESULTS => ", res.data);
     if (!option) {
-      // search_results_artists.set([]);
       search_results_musics.set(res.data.tracks.items);
       console.log("MUSIC LIST ===> ", res.data.tracks.items);
     } else {
-      // search_results_musics.set([]);
       search_results_artists.set(res.data.artists.items);
       console.log("ARTISTS LIST ==> ", res.data.artists.items);
     }
@@ -67,9 +63,7 @@
       placeholder="Search Artist/Music"
       class="pl-2 rounded-l w-full font-semibold bglg-color dk-color"
     />
-    <button on:click={searchMusic} class="search_btn h-12 w-12"
-      ><FaSearch /></button
-    >
+    <button on:click={searchMusic} class="search_btn"><FaSearch /></button>
   </div>
 </div>
 
@@ -80,14 +74,10 @@
     border-radius: 0 4px 4px 0;
     background-color: var(--mid-color);
     color: var(--dark-color);
+    width: 50px;
+    height: 50px;
   }
   .search_btn:hover {
     opacity: 80%;
-  }
-  @media (max-width: 420px) {
-    .search_btn {
-      width: 100px;
-      font-size: 1.2rem;
-    }
   }
 </style>

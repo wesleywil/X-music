@@ -4,8 +4,7 @@
   import Navbar from "./components/Navbar.svelte";
   //Pages
   import Homepage from "./pages/homepage.svelte";
-  import Top100 from "./pages/top100.svelte";
-  import Test from "./pages/test.svelte";
+  import Top50 from "./pages/top50.svelte";
   import Musics from "./pages/musics.svelte";
 </script>
 
@@ -14,8 +13,7 @@
     <Navbar />
     <div>
       <Route path="/"><Homepage /></Route>
-      <Route path="/top100"><Top100 /></Route>
-      <Route path="/xp"><Test /></Route>
+      <Route path="/top50"><Top50 /></Route>
       <Route path="/musics"><Musics /></Route>
     </div>
   </Router>

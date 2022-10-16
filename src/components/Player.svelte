@@ -84,8 +84,8 @@
 </script>
 
 {#if showValue}
-  <div class={`flex justify-center gap-4  p-2 {hidden}`}>
-    <div class="border w-24 h-24">
+  <div class="w-screen flex justify-center gap-4  p-2 bgdk-color">
+    <div class="border w-24 h-24 hidden xl:block md:block">
       <img src={album_img} alt="album" />
     </div>
     <div class="self-center  border w-96 h-8 text-xl overflow-hidden">
@@ -97,25 +97,27 @@
     </div>
     <button
       on:click={playMusic}
-      class="self-center bgmd-color dk-color px-2 pl-4 font-bold w-12 h-12 rounded-full"
+      class="self-center bgmd-color dk-color px-1 xl:px-2 md:px-2 xl:pl-4 md:pl-4 font-bold w-8 h-8 xl:w-12 md:w-12 xl:h-12 md:h-12 rounded-full"
       ><FaPlay /></button
     >
     <button
       on:click={pauseMusic}
-      class="self-center bgmd-color dk-color px-2 py-1 font-bold w-12 h-12 rounded-full"
+      class="self-center bgmd-color dk-color px-1 xl:px-2 md:px-2 xl:py-1 md:py-1 font-bold w-8 h-8 xl:w-12 md:w-12 xl:h-12 md:h-12 rounded-full"
       ><FaPause /></button
     >
     <div class="flex  gap-4 self-center">
       <button
         on:click={volumeUp}
-        class="bgmd-color dk-color px-2 py-1 font-bold w-12 h-12 rounded-full"
+        class="bgmd-color dk-color px-2 py-1 font-bold w-8 h-8 xl:w-12 md:w-12 xl:h-12 md:h-12 rounded-full"
       >
         <FaVolumeUp />
       </button>
-      <h3 class="self-center text-3xl">{volume.toPrecision(1)}</h3>
+      <h3 class="self-center text-xl xl:text-3xl md:text-3xl">
+        {volume.toPrecision(1)}
+      </h3>
       <button
         on:click={volumeDown}
-        class="bgmd-color dk-color px-2 py-1 font-bold w-12 h-12 rounded-full"
+        class="bgmd-color dk-color px-2 py-1 font-bold w-8 h-8 xl:w-12 md:w-12 xl:h-12 md:h-12 rounded-full"
       >
         <FaVolumeDown />
       </button>

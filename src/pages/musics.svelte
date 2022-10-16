@@ -95,7 +95,8 @@
   }
   @media (max-width: 420px) {
     .search_div {
-      width: 50vw;
+      margin-right: 20px;
+      width: 55vh;
     }
   }
 </style>
