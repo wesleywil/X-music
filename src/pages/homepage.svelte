@@ -8,18 +8,21 @@
   >
     <h1 class="text-6xl xl:text-8xl md:text-8xl font-bold flex items-center">
       <img
-        src="public/X-music.svg"
+        src="X-music.svg"
         alt="logo"
-        class="w-16 xl:w-24 md:w-24 mt-4 rotate-90 self-center"
+        class="w-16 xl:w-24 md:w-24 mt-4 rotate-90 self-center animate_logo"
       />
       Music
     </h1>
-    <p>X-music is the ultimate destination for music lovers of all kinds!</p>
-    <p>
-      Whether you're looking for new music to discover, or want to revisit some
-      old favorites, this is the perfect place for you.
-    </p>
-    <div class="mt-4">
+    <div class="w-full xl:w-4/5	 ml-2">
+      <p>X-music is the ultimate destination for music lovers of all kinds!</p>
+      <p>
+        Whether you're looking for new music to discover, or want to revisit
+        some old favorites, this is the perfect place for you.
+      </p>
+    </div>
+
+    <div class="mt-4 ml-2">
       <Link
         to="/top100"
         class="bgmd-color dk-color hover:opacity-80 font-bold px-2 py-1 rounded"
@@ -27,12 +30,27 @@
       >
     </div>
   </div>
-  <div class="w-1/3 p-2 ml-12 hidden xl:block md:block">
-    <img src="public/homepage_img.svg" alt="music_player" />
+  <div class="w-1/2 p-2 ml-12 hidden xl:block md:block">
+    <img src="homepage_img.svg" alt="music_player" />
   </div>
 </div>
 
 <style>
+  @keyframes animate_logo {
+    0% {
+      transform: scale(1) rotateZ(90deg);
+    }
+    50% {
+      transform: scale(1.2) rotateZ(90deg);
+    }
+    100% {
+      transform: scale(1) rotateZ(90deg);
+    }
+  }
+  .animate_logo:hover {
+    animation: 1s linear infinite animate_logo;
+  }
+
   .screen_size {
     min-height: 92vh;
     max-width: 100%;
